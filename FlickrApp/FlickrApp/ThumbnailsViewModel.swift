@@ -11,12 +11,13 @@ import Foundation
 class ThumbnailViewModel {
    
     var imageCells = [ImageCell]()
+    var searchTerm = "amsterdam"
     
     func getRecent(page forPage: Int, completion: @escaping (_ imageCells: [ImageCell]?, _ error: Error?) -> Void) {
         
         let baseURL = FlickrAPI.searchURL
         let apiString = "&api_key=\(FlickrAPI.key)"
-        let searchTag = "&tags=amsterdam"
+        let searchTag = "&tags=" + self.searchTerm
         let perPage = "&per_page=30"
         let page = "&page=" + String(describing: forPage)
         let responseFormat = "&format=json&nojsoncallback=1"
